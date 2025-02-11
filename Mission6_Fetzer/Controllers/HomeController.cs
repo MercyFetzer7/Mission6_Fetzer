@@ -21,7 +21,13 @@ public class HomeController : Controller
     {
         return View();
     }
+    [HttpGet]
+    public IActionResult MovieForm()
+    {
+        return View();
+    }
 
+    [HttpPost]
     public IActionResult MovieForm(Form response)
     {
         _context.Forms.Add(response);
