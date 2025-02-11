@@ -6,7 +6,12 @@ namespace Mission6.Controllers;
 
 public class HomeController : Controller
 {
-   
+   private MovieFormContext _context;
+
+   public HomeController(MovieFormContext temp)
+   {
+       _context = temp;
+   }
     public IActionResult Index()
     {
         return View();
@@ -17,9 +22,11 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult MovieForm()
+    public IActionResult MovieForm(Form response)
     {
-        return View();
+        _context.Forms.Add(response);
+        _context.SaveChanges();
+        return View("Confirmation", response);
     }
     
 }

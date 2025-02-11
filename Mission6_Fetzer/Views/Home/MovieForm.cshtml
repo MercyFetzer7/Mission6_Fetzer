@@ -2,21 +2,22 @@
 *@
 @{
     ViewData["Title"] = "Movie Form";
-
 }
 
+@model Form
 
 <h1>Movie Form</h1>
 
 <form method="post">
     <label asp-for="Category">Category:</label>
     <input asp-for="Category"/>
+    <span asp-validation-for="Category"></span>
     <br/>
     <label asp-for="Title">Title:</label>
     <input asp-for="Title"/>
     <br/>
     <label asp-for="Year">Year:</label>
-    <input asp-for="Year"/>
+    <input asp-for="Year" type="number"/>
     <br/>
     <label asp-for="Director">Director:</label>
     <input asp-for="Director"/>
@@ -39,6 +40,6 @@
     <input asp-for="LentTo"/>
     <br/>
     <label asp-for="Notes">Notes</label>
-    <input asp-for="Notes"/>
+    <textarea asp-for="Notes"></textarea>
     <button type="submit">Submit Movie</button>
 </form>
