@@ -27,15 +27,24 @@ public class HomeController : Controller
     {
         ViewBag.Categories = _context.Categories
             .OrderBy(x => x.CategoryName).ToList();
-        return View();
+        return View("MovieForm", new Form());
     }
 
     [HttpPost]
     public IActionResult MovieForm(Form response)
     {
-        _context.Forms.Add(response);
-        _context.SaveChanges();
-        return View("Confirmation", response);
+        if (ModelState.IsValid)
+        {
+            _context.Forms.Add(response);
+            _context.SaveChanges();
+            return View("Confirmation", response);
+        }
+        else // Invalid data
+        {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName).ToList();
+            return View(response);
+        }
     }
 
     public IActionResult MovieList()
