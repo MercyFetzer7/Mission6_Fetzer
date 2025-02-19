@@ -14,9 +14,9 @@ public class Form
     
     [Required(ErrorMessage = "Please enter the title of the movie.")]
     public string Title { get; set; }
-    
+
     [Range(1888, int.MaxValue, ErrorMessage = "Year must be 1888 or later.")]
-    public int Year { get; set; }
+    public int Year { get; set; } = 1889;
     
     public string? Director { get; set; }
     
