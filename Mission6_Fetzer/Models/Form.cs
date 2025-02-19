@@ -7,9 +7,9 @@ public class Form
 {
     [Key]
     public int FormId { get; set; }
-    
+
     [ForeignKey("CategoryId")] // Create foreign key
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
     [Required(ErrorMessage = "Please enter the title of the movie.")]
@@ -24,12 +24,12 @@ public class Form
 
     [Required(ErrorMessage = "Please indicated whether this movie has been edited or not.")]
 
-    public bool Edited { get; set; }
+    public bool? Edited { get; set; }
     
     public string? LentTo { get; set; }
     
     [Required(ErrorMessage = "Please indicated whether this movie has been copied to plex or not.")]
-    public bool CopiedToPlex { get; set; }
+    public bool? CopiedToPlex { get; set; }
     
     [MaxLength(25)]
     public string? Notes { get; set; }
